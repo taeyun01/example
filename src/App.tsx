@@ -1,6 +1,36 @@
 import { Button } from "@/components/ui/button";
 import "./App.css";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
+import { CarouselDemo } from "@/components/carouselDemo";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { ChefHat } from "lucide-react";
 
 function App() {
   const isActive = true;
@@ -70,6 +100,87 @@ function App() {
       >
         isActive
       </div>
+
+      <h2 className="text-2xl font-bold">버튼 컴포넌트</h2>
+      <Button variant="destructive">Click me</Button>
+      <Button variant="ghost">Click me</Button>
+      <Button variant="outline">Click me</Button>
+      <Button variant="link">Click me</Button>
+      <Button variant="secondary">Click me</Button>
+
+      <h2 className="text-2xl font-bold">인풋 컴포넌트</h2>
+      <div className="p-5">
+        <Input />
+        <Input type="email" placeholder="Email" />
+
+        <Textarea />
+
+        <Toaster />
+
+        <Button
+          onClick={() =>
+            toast("Hello", {
+              position: "top-center",
+            })
+          }
+        >
+          토스트 버튼
+        </Button>
+      </div>
+
+      <h2 className="text-2xl font-bold">캐러셀 컴포넌트</h2>
+      <CarouselDemo />
+      <hr className="my-4" />
+      <h2 className="text-2xl font-bold">팝오버 컴포넌트</h2>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button variant="outline">팝오버 열기</Button>
+        </PopoverTrigger>
+        <PopoverContent>Place content for the popover here.</PopoverContent>
+      </Popover>
+      <hr className="my-4" />
+      <h2 className="text-2xl font-bold">다이얼로그 컴포넌트</h2>
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button variant="outline">다이얼로그 열기</Button>
+        </DialogTrigger>
+        <DialogContent>
+          {/* <DialogHeader> */}
+          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogDescription>
+            This action cannot be undone. This will permanently delete your
+            account and remove your data from our servers.
+          </DialogDescription>
+          {/* </DialogHeader> */}
+        </DialogContent>
+      </Dialog>
+      <hr className="my-4" />
+      <h2 className="text-2xl font-bold">경고 다이얼로그 컴포넌트</h2>
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button variant="outline">경고 다이얼로그 열기</Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete your
+              account and remove your data from our servers.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel onClick={() => alert("Cancel")}>
+              Cancel
+            </AlertDialogCancel>
+            <AlertDialogAction onClick={() => alert("Continue")}>
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+      <hr className="my-4" />
+      <h2 className="text-2xl font-bold">기본 제공되는 아이콘 컴포넌트</h2>
+      <ChefHat className="h-10 w-10 fill-red-500" />
     </div>
   );
 }
