@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import { combine } from "zustand/middleware";
+import { immer } from "zustand/middleware/immer";
 
 // type Store = {
 //   count: number;
@@ -20,21 +21,25 @@ import { combine } from "zustand/middleware";
 
 //* combine미들웨어
 export const useCountStore = create(
-  combine({ count: 0 }, (set, get) => ({
-    actions: {
-      increase: () => {
-        // get();
-        set((state) => ({
-          count: state.count + 1,
-        }));
+  immer(
+    combine({ count: 0 }, (set, get) => ({
+      actions: {
+        increase: () => {
+          // get();
+          set((state) => {
+            state.count += 1;
+          });
+          // state.count += 1; 원래 이렇게 객체의 특정 속성에 직접 접근해서 값을 바꾸면 안됨
+          // 하지만 immer미들웨어를 사용하면 알아서 불변성을 관리해주기 때문에 state를 자동으로 업데이트 시켜줌
+        },
+        decrease: () => {
+          set((state) => {
+            state.count = state.count === 0 ? 0 : (state.count -= 1);
+          });
+        },
       },
-      decrease: () => {
-        set((state) => ({
-          count: state.count === 0 ? 0 : state.count - 1,
-        }));
-      },
-    },
-  })),
+    })),
+  ),
 );
 
 // export const useCountStore = create<Store>((set, get) => ({
