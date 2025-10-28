@@ -5,6 +5,7 @@ import SignInPage from "@/pages/sign-in-page";
 import SignUpPage from "@/pages/sign-up-page";
 import IndexPage from "@/pages/index-page";
 import CounterPage from "@/pages/counter-page";
+import TodoListPage from "@/pages/todo-list-page";
 
 const AuthLayout = () => {
   return (
@@ -21,6 +22,8 @@ function App() {
       <Route path="/" element={<IndexPage />} />
       <Route path="/shadcnbase" element={<ShadchBase />} />
       <Route path="/counter" element={<CounterPage />} />
+      <Route path="/todo-list" element={<TodoListPage />} />
+
       <Route element={<AuthLayout />}>
         <Route path="/sign-in" element={<SignInPage />} />
         <Route path="/sign-up" element={<SignUpPage />} />
