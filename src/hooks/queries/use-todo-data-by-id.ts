@@ -1,10 +1,11 @@
 import { fetchTodoById } from "@/api/fetch-todo-by-id";
+import { QUERY_KEYS } from "@/lib/constants";
 import { useQuery } from "@tanstack/react-query";
 
 export const useTodosDataById = (id: string) => {
   return useQuery({
     queryFn: () => fetchTodoById(id),
-    queryKey: ["todos", id],
+    queryKey: QUERY_KEYS.todo.detail(id),
 
     //* 전역적으로 기본값을 설정해줬지만, 해당 쿼리의 옵션을 다르게 하고 싶다면 이걸로 덮어 씌어진다.
     staleTime: 5000, // 보통 실시간 주가, 실시간 채팅 데이터처럼 최신 데이터가 굉장히 빠르게 반영돼야 되는 경우가 아니라면 보통은 너무 과한 데이터 요청을 방지하기 위해서 3~5초로 설정하는게 대부분
