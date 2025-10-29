@@ -2,11 +2,11 @@ import { Button } from "@/components/ui/button";
 import { useDeleteTodo } from "@/store/todo";
 import { Link } from "react-router";
 
-const TodoItem = ({ id, content }: { id: number; content: string }) => {
+const TodoItem = ({ id, content }: { id: string; content: string }) => {
   const deleteTodo = useDeleteTodo();
 
   const handleDeleteClick = () => {
-    deleteTodo(id);
+    deleteTodo(Number(id));
   };
 
   return (

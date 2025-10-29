@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { useCreateTodo } from "@/store/todo";
-import { useState, type MouseEventHandler } from "react";
+import { useState } from "react";
+import { useCreateTodoMutation } from "@/hooks/mutations/use-create-todo-mutation";
 
 const TodoEditor = () => {
-  const createTodo = useCreateTodo();
+  const { mutate, isPending } = useCreateTodoMutation();
   const [content, setContent] = useState("");
 
   const handleAddClick = (e: any) => {
+    e.preventDefault();
     if (content.trim() === "") return;
 
-    e.preventDefault();
-    createTodo(content);
+    mutate(content);
     setContent("");
   };
 
@@ -22,7 +22,9 @@ const TodoEditor = () => {
         onChange={(e) => setContent(e.target.value)}
         placeholder="새로운 할 일을 입력해주세요 ..."
       />
-      <Button onClick={handleAddClick}>추가</Button>
+      <Button disabled={isPending} onClick={handleAddClick}>
+        추가
+      </Button>
     </form>
   );
 };
