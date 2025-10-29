@@ -10,35 +10,35 @@ const initialState: {
 };
 
 const useTodosStore = create(
-  persist(
-    immer(
-      combine(initialState, (set) => ({
-        actions: {
-          createTodo: (content: string) => {
-            set((state) => {
-              state.todos.push({
-                id: new Date().getTime(),
-                content: content,
-              });
+  // persist(
+  immer(
+    combine(initialState, (set) => ({
+      actions: {
+        createTodo: (content: string) => {
+          set((state) => {
+            state.todos.push({
+              id: new Date().getTime(),
+              content: content,
             });
-          },
-          deleteTodo: (targetId: number) => {
-            set((state) => {
-              state.todos = state.todos.filter((todo) => todo.id !== targetId);
-            });
-          },
+          });
         },
-      })),
-    ),
-    {
-      name: "todoStore", // 스토리지에 어떤 이름으로 저장할지
-      partialize: (store) => ({
-        todos: store.todos, // 스토어의 todos값만 저장 (삭제되면 알아서 삭제됨)
-      }),
-      // storage의 옵션을 읽어 세션 스토리지에 데이터를 보관
-      // storage: createJSONStorage(() => sessionStorage),
-    },
+        deleteTodo: (targetId: number) => {
+          set((state) => {
+            state.todos = state.todos.filter((todo) => todo.id !== targetId);
+          });
+        },
+      },
+    })),
   ),
+  // {
+  //   name: "todoStore", // 스토리지에 어떤 이름으로 저장할지
+  //   partialize: (store) => ({
+  //     todos: store.todos, // 스토어의 todos값만 저장 (삭제되면 알아서 삭제됨)
+  //   }),
+  //   // storage의 옵션을 읽어 세션 스토리지에 데이터를 보관
+  //   // storage: createJSONStorage(() => sessionStorage),
+  // },
+  // ),
 );
 
 // 스토어의 todos만 반환하는 훅
