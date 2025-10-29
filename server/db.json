@@ -6,58 +6,8 @@
       "isDone": true
     },
     {
-      "id": "2",
-      "content": "TODO 2",
-      "isDone": true
-    },
-    {
-      "id": "3",
-      "content": "TODO 3",
-      "isDone": false
-    },
-    {
-      "id": "4a1a",
+      "id": "1dd0",
       "content": "123",
-      "isDone": false
-    },
-    {
-      "id": "c341",
-      "content": "하하하",
-      "isDone": false
-    },
-    {
-      "id": "2b34",
-      "content": "후후",
-      "isDone": false
-    },
-    {
-      "id": "5a24",
-      "content": "하하하",
-      "isDone": false
-    },
-    {
-      "id": "d893",
-      "content": "ㅋㅋㅋㅋㅋㅋㅋ",
-      "isDone": false
-    },
-    {
-      "id": "db03",
-      "content": "무효화!!",
-      "isDone": false
-    },
-    {
-      "id": "772d",
-      "content": "우왁!!",
-      "isDone": false
-    },
-    {
-      "id": "554d",
-      "content": "123",
-      "isDone": false
-    },
-    {
-      "id": "d1a2",
-      "content": "우와악",
       "isDone": false
     }
   ]
